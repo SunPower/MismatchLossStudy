@@ -86,6 +86,6 @@ if __name__ == '__main__':
 	tech = 'TEST'
 	# Show mismatch loss on individual strings
 	directory = os.path.join('~','repo','MismatchLossStudy','data')
-	fname = directory + '/flash_test_results.csv'
+	fname = directory + '/fictional_flash_test_results.csv'
 	df = get_flash_data(fname)
-	df.to_pickle('data/%s.pkl'%(tech))
+	df.to_pickle(directory + '/%s.pkl'%(tech))

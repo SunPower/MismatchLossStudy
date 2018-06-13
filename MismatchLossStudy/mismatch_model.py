@@ -151,20 +151,6 @@ def run_model(df_flash_data, numMods=8, numStrings=3, num_trials= 1000, temp_var
     df_result.to_csv(model_run_fname)
     return df_result
 
-#def run_energy_mismatch_model(df_flash_data, numMods=10, numStrings=2, num_trials= 100):
-    """
-    Get energy mismatch for a TMY file
-    :param df_flash_data:
-    :type df_flash_data:
-    :param numMods:
-    :type numMods:
-    :param numStrings:
-    :type numStrings:
-    :param num_trials:
-    :type num_trials:
-    :return:
-    :rtype:
-    """
 
 def show_mismatch_best_worst_case(df_stc):
     a = df_stc.loc[df_stc.mismatch_loss.idxmin()] # high mismatch loss
@@ -210,9 +196,9 @@ def show_flash_data(df_flash_data):
 	pmp = df_flash_data[df_flash_data['pmp1']>327]['pmp1']
 	pmp.hist(bins=50)
 	plt.grid(True)
-	plt.axvline(327, color='red')
 	plt.xlabel('Pmp(W)')
 	plt.title(r'$Distribution\ of\ P_{mpmod}\ -\ (Population\ size=%d)$'%(len(pmp)))
+
 #%%
 if __name__ == '__main__':
     from matplotlib import pyplot as plt
@@ -224,10 +210,10 @@ if __name__ == '__main__':
     else:
         os.makedirs(directory)
 
-    fname = directory + '/flash_test_results.csv'
+    fname = directory + '/fictional_flash_test_results.csv'
     df_flash_data = get_flash_data(fname)
 
-    df_flash_data.to_pickle('../data/%s.pkl'%(tech))
+    df_flash_data.to_pickle('data/%s.pkl'%(tech))
 
     # run Mismatch Model
     df_stc = run_model(df_flash_data, numMods=8, numStrings=3, num_trials=50)
@@ -236,3 +222,18 @@ if __name__ == '__main__':
     show_flash_data(df_flash_data)
 	# Show mismatch loss on individual strings
     show_mismatch_best_worst_case(df_stc)
+
+    # Show mismatch loss
+    mismatch_field = 'mismatch_loss'
+    LOW_X = -0.07
+    plt.figure()
+    df_stc[mismatch_field].hist(bins=20)
+    plt.title('Mismatch Loss Distribution')
+    p50 = np.nanpercentile(df_stc[mismatch_field], 50)
+    p95 = np.nanpercentile(df_stc[mismatch_field], 100-95)
+    print(','.join([str(round(x,2)) for x in[3, 8, p50, p95]]))
+    plt.axvline(p50, color='green', label='p50')
+    plt.axvline(p95, color='red', alpha=0.3, label='p95')
+    plt.legend()
+    #plt.text(LOW_X, n.max()*0.5, 'p50=%.3f%%'%(p50), color='red', size=10)
+    #plt.text(LOW_X, n.max()*0.3, r'$N_s=%d\ by\ N_m=%d$'%(3, 8), color='red', size=10)
