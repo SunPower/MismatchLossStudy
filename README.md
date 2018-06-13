@@ -1,7 +1,6 @@
 # MismatchLossStudy
 Mismatch Loss study using PVMismatch
 
-# Quick usage example
 First step - Make sure get_flash_data.py from the core module MismatchLossStudy can read your flash test results file
 
 # STC calculations 
