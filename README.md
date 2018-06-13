@@ -1,7 +1,10 @@
 # MismatchLossStudy
 Mismatch Loss study using PVMismatch
 
-First step - Make sure get_flash_data.py from the core module MismatchLossStudy can read your flash test results file
+# First steps 
+Create Conda environment using the included .yml file
+
+Make sure get_flash_data.py from the core module MismatchLossStudy can read your flash test results file
 
 # STC calculations 
 To run Monte Carlo simulations for STC mismatch calculations -  run_mismatchloss_study.py
