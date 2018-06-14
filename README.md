@@ -16,3 +16,4 @@ To run one simulation of annual energy loss use run_annual_energy_mismatch.py
 
 To run full Monte Carlo for annual energy loss, use run_annual.sh 
 
+You will have to modify the paths in this shell script to suit your environment. 
