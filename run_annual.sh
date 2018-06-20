@@ -8,7 +8,6 @@ do
 	  sleep 3;
 	  echo "just finished batch of $i"
       else
-          # ~/anaconda3/envs/PVMIS27/bin/python run_annual_energy_mismatch.py 8 3 E20 $i &
           ~/anaconda3/envs/PVMIS27/bin/python run_annual_energy_mismatch.py $1 $2 $3 $i &
          
       fi
