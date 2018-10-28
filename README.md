@@ -20,3 +20,7 @@ To run one simulation of annual energy loss use run_annual_energy_mismatch.py
 To run full Monte Carlo for annual energy loss, use run_annual.sh 
 
 You will have to modify the paths in this shell script to suit your environment. 
+
+We appreciate your use of MismatchLossStudy, and ask that you appropriately cite the software in exchange for its open-source publication :
+
+Chetan Chaudhari (2018). “MismatchLossStudy Project: https://github.com/SunPower/MismatchLossStudy". SunPower Corporation, Richmond, CA.
